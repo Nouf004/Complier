@@ -1477,7 +1477,7 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 60 "TINY_l.y"
-    { production[pCount++] = "statements -> ε "; ;}
+    { production[pCount++] = "statements -> epsilon "; ;}
     break;
 
   case 5:
@@ -1551,7 +1551,7 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 103 "TINY_l.y"
-    { production[pCount++] = "declarations -> ε "; ;}
+    { production[pCount++] = "declarations -> epsilon "; ;}
     break;
 
   case 15:
