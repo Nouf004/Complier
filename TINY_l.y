@@ -57,7 +57,7 @@ declarations
   : declarations declaration
     { production[pCount++] = "declarations -> declarations declaration"; }
   |
-  { production[pCount++] = "declarations -> epsilon "; }
+    { production[pCount++] = "declarations -> epsilon "; }
   ;
 
 declaration
@@ -100,7 +100,7 @@ statements
   : statements statement
     { production[pCount++] = "statements -> statements statement"; }
   |
-  { production[pCount++] = "declarations -> epsilon "; }
+    { production[pCount++] = "statements -> epsilon "; }
 
   ;
 
@@ -216,10 +216,8 @@ comp
 
 void yyerror(const char* s)
 {
-  if(!errorflag) {
   errorflag = 1;
   fprintf(stderr, "Syntax error at line %d: %s\n", line, s);
- }
 }
 
 int main(int argc, char** argv)
