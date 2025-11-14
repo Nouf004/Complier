@@ -57,7 +57,7 @@ declarations
   : declarations declaration
     { production[pCount++] = "declarations -> declarations declaration"; }
   |
-  { production[pCount++] = "statements -> epsilon "; }
+  { production[pCount++] = "declarations -> epsilon "; }
   ;
 
 declaration
@@ -100,7 +100,7 @@ statements
   : statements statement
     { production[pCount++] = "statements -> statements statement"; }
   |
-  { production[pCount++] = "declarations -> epsilon "; }
+  { production[pCount++] = "statements -> epsilon "; }
 
   ;
 
