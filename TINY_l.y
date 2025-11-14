@@ -62,7 +62,7 @@ declarations
 
 declaration
   : identifiers COLON type SEMICOLON
-    { production[pCount++] = "declaration -> identifiers : type"; }
+    { production[pCount++] = "declaration -> identifiers : type;"; }
   | identifiers error type SEMICOLON
     {
       errorflag = 1;
@@ -100,21 +100,21 @@ statements
   : statements statement
     { production[pCount++] = "statements -> statements statement"; }
   |
-  { production[pCount++] = "statements -> epsilon "; }
+  { production[pCount++] = "declarations -> epsilon "; }
 
   ;
 
 statement
   : statement_assign SEMICOLON
-    { production[pCount++] = "statement -> statement_assign"; }
+    { production[pCount++] = "statement -> statement_assign;"; }
   | statement_if SEMICOLON
-    { production[pCount++] = "statement -> statement_if"; }
+    { production[pCount++] = "statement -> statement_if;"; }
   | statement_while SEMICOLON
-    { production[pCount++] = "statement -> statement_while"; }
+    { production[pCount++] = "statement -> statement_while;"; }
   | statement_read SEMICOLON
-    { production[pCount++] = "statement -> statement_read"; }
+    { production[pCount++] = "statement -> statement_read;"; }
   | statement_write SEMICOLON
-    { production[pCount++] = "statement -> statement_write"; }
+    { production[pCount++] = "statement -> statement_write;"; }
   | statement_assign error
     {
       errorflag = 1;
@@ -216,8 +216,10 @@ comp
 
 void yyerror(const char* s)
 {
+  if(!errorflag) {
   errorflag = 1;
   fprintf(stderr, "Syntax error at line %d: %s\n", line, s);
+ }
 }
 
 int main(int argc, char** argv)
